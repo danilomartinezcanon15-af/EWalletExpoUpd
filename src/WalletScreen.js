@@ -173,3 +173,50 @@ export default function WalletScreen() {
         </TouchableOpacity>
 
       </View>
+
+       {/* USDT */}
+
+       <View style={styles.section}>
+
+<Text style={styles.sectionTitle}>
+  Compra USDT
+</Text>
+
+<Text>
+  Saldo Wallet:
+  {' '}
+  ${walletBalance.toLocaleString('es-CO')}
+</Text>
+
+<TouchableOpacity
+  style={styles.button}
+  onPress={handleBuyUSDT}
+>
+
+  <Text style={styles.buttonText}>
+    Comprar 100000 COP en USDT
+  </Text>
+
+</TouchableOpacity>
+
+{usdtPurchase && (
+
+  <View>
+
+    <Text>
+      Tasa:
+      {' '}
+      ${usdtPurchase.exchangeRate}
+    </Text>
+
+    <Text>
+      USDT:
+      {' '}
+      {usdtPurchase.usdt.toFixed(2)}
+    </Text>
+
+  </View>
+
+)}
+
+</View>
