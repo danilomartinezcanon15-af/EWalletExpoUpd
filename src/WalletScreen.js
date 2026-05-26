@@ -343,3 +343,110 @@ export default function WalletScreen() {
 );
 
 }
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    padding: 20,
+    marginTop: 40,
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+
+  balance: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: 'blue',
+  },
+
+  cashback: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: 'green',
+  },
+
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    marginBottom: 20,
+  },
+
+  button: {
+    backgroundColor: '#222',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 10,
+  },
+
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+
+  section: {
+    backgroundColor: '#f4f4f4',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+
+  goalCard: {
+    marginBottom: 15,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+  },
+
+  critical: {
+    color: 'red',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+  stable: {
+    color: 'green',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+  card: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#f4f4f4',
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+
+  type: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+
+  amount: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+
+  income: {
+    color: 'green',
+  },
+
+  withdraw: {
+    color: 'red',
+  },
+
+});
