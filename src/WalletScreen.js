@@ -111,3 +111,156 @@ const filteredTransactions = useMemo(() => {
     setGoals(result.goals);
 
   };
+
+
+
+  <ScrollView
+      style={styles.container}
+      contentContainerStyle={{
+        paddingBottom: 100,
+      }}
+    >
+
+      <Text style={styles.title}>
+        Saldo Neto Total
+      </Text>
+
+      <Text style={styles.balance}>
+        ${netBalance.toLocaleString('es-CO')}
+      </Text>
+
+      <Text style={styles.cashback}>
+        Puntos ADSO:
+        {' '}
+        {totalCashback.toLocaleString('es-CO')}
+      </Text>
+
+      {/* BOTONES FILTRO */}
+
+      <View style={styles.buttons}>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Ingreso')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver solo Ingresos
+          </Text>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Retiro')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver solo Retiros
+          </Text>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Todos')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver Todos
+          </Text>
+
+        </TouchableOpacity>
+
+      </View>
+
+       {/* USDT */}
+
+       <View style={styles.section}>
+
+<Text style={styles.sectionTitle}>
+  Compra USDT
+</Text>
+
+<Text>
+  Saldo Wallet:
+  {' '}
+  ${walletBalance.toLocaleString('es-CO')}
+</Text>
+
+<TouchableOpacity
+  style={styles.button}
+  onPress={handleBuyUSDT}
+>
+
+  <Text style={styles.buttonText}>
+    Comprar 100000 COP en USDT
+  </Text>
+
+</TouchableOpacity>
+
+{usdtPurchase && (
+
+  <View>
+
+    <Text>
+      Tasa:
+      {' '}
+      ${usdtPurchase.exchangeRate}
+    </Text>
+
+    <Text>
+      USDT:
+      {' '}
+      {usdtPurchase.usdt.toFixed(2)}
+    </Text>
+
+  </View>
+
+)}
+
+</View>
+
+ {/* METAS */}
+
+ <View style={styles.section}>
+
+<Text style={styles.sectionTitle}>
+  Metas de ahorro
+</Text>
+
+{goals.map(goal => (
+
+  <View
+    key={goal.id}
+    style={styles.goalCard}
+  >
+
+    <Text>
+      {goal.name}
+    </Text>
+
+    <Text>
+      Ahorrado:
+      {' '}
+      ${goal.saved.toLocaleString('es-CO')}
+    </Text>
+
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() =>
+        handleTransfer(goal.id)
+      }
+    >
+
+      <Text style={styles.buttonText}>
+        Transferir 50000
+      </Text>
+
+    </TouchableOpacity>
+
+  </View>
+
+))}
+
+</View>
