@@ -30,4 +30,63 @@ export default function WalletScreen() {
   const [walletBalance, setWalletBalance] = useState(500000);
 
   const [usdtPurchase, setUsdtPurchase] = useState(null);
+
+  const [goals, setGoals] = useState(
+    createSavingsGoals()
+  );
+
+  const filteredTransactions = useMemo(() => {
+
+    if (filter === 'Ingreso') {
+
+      return allTransactions.filter(
+        t => t.type === 'Ingreso'
+      );
+
+    }
+
+    if (filter === 'Retiro') {
+
+      return allTransactions.filter(
+        t => t.type === 'Retiro'
+      );
+
+    }
+
+    return allTransactions;
+
+  }, [filter]);
+
+  const netBalance =
+    calculateNetBalance(allTransactions);
+
+  const totalCashback =
+    calculateTotalCashback(allTransactions);
+
+  const expenseStatus =
+    classifyExpenses(allTransactions);
+
+  const handleBuyUSDT = () => {
+
+    const result = buyUSDT(
+      walletBalance,
+      100000
+    );
+
+    if (result.status === 'Rechazado') {
+
+      alert('Saldo insuficiente');
+
+      return;
+
+    }
+
+    setWalletBalance(
+      walletBalance - 100000
+    );
+
+    setUsdtPurchase(result);
+
+  };
+
   
