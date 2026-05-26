@@ -89,4 +89,87 @@ export default function WalletScreen() {
 
   };
 
-  
+  const handleTransfer = (goalId) => {
+
+    const result = transferToSavingsGoal(
+      walletBalance,
+      goals,
+      goalId,
+      50000
+    );
+
+    if (result.status === 'Rechazado') {
+
+      alert('Saldo insuficiente');
+
+      return;
+
+    }
+
+    setWalletBalance(result.balance);
+
+    setGoals(result.goals);
+
+  };
+
+  return (
+
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{
+        paddingBottom: 100,
+      }}
+    >
+
+      <Text style={styles.title}>
+        Saldo Neto Total
+      </Text>
+
+      <Text style={styles.balance}>
+        ${netBalance.toLocaleString('es-CO')}
+      </Text>
+
+      <Text style={styles.cashback}>
+        Puntos ADSO:
+        {' '}
+        {totalCashback.toLocaleString('es-CO')}
+      </Text>
+
+      {/* BOTONES FILTRO */}
+
+      <View style={styles.buttons}>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Ingreso')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver solo Ingresos
+          </Text>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Retiro')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver solo Retiros
+          </Text>
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setFilter('Todos')}
+        >
+
+          <Text style={styles.buttonText}>
+            Ver Todos
+          </Text>
+
+        </TouchableOpacity>
+
+      </View>
