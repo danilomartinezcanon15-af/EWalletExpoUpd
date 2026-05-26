@@ -220,3 +220,126 @@ export default function WalletScreen() {
 )}
 
 </View>
+
+ {/* METAS */}
+
+ <View style={styles.section}>
+
+<Text style={styles.sectionTitle}>
+  Metas de ahorro
+</Text>
+
+{goals.map(goal => (
+
+  <View
+    key={goal.id}
+    style={styles.goalCard}
+  >
+
+    <Text>
+      {goal.name}
+    </Text>
+
+    <Text>
+      Ahorrado:
+      {' '}
+      ${goal.saved.toLocaleString('es-CO')}
+    </Text>
+
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() =>
+        handleTransfer(goal.id)
+      }
+    >
+
+      <Text style={styles.buttonText}>
+        Transferir 50000
+      </Text>
+
+    </TouchableOpacity>
+
+  </View>
+
+))}
+
+</View>
+
+ {/* ALERTA */}
+
+ <View style={styles.section}>
+
+<Text style={styles.sectionTitle}>
+  Estado financiero
+</Text>
+
+{expenseStatus === 'Gasto Crítico' ? (
+
+  <Text style={styles.critical}>
+    ⚠ Gasto Crítico
+  </Text>
+
+) : (
+
+  <Text style={styles.stable}>
+    ✅ Estable
+  </Text>
+
+)}
+
+</View>
+
+ {/* TRANSACCIONES */}
+
+ {filteredTransactions.map(item => (
+
+<View
+  key={item.id}
+  style={styles.card}
+>
+
+  <View>
+
+    <Text style={styles.type}>
+      {item.type}
+    </Text>
+
+    <Text>
+      Cuenta:
+      {' '}
+      {item.accountNumber}
+    </Text>
+
+    <Text>
+      Estado:
+      {' '}
+      {item.status}
+    </Text>
+
+  </View>
+
+  <View>
+
+    <Text
+      style={[
+        styles.amount,
+
+        item.type === 'Ingreso'
+          ? styles.income
+          : styles.withdraw,
+      ]}
+    >
+      ${item.amount.toLocaleString('es-CO')}
+    </Text>
+
+  </View>
+
+</View>
+
+))}
+
+</ScrollView>
+
+);
+
+}
