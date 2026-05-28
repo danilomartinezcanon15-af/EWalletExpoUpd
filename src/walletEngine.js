@@ -87,6 +87,7 @@ export function calculateTotalCashback(transactions) {
 
 /* =========================
    USDT SYSTEM
+
 */
 export function buyUSDT(balanceCOP, amountCOP) {
 
@@ -114,6 +115,7 @@ export function buyUSDT(balanceCOP, amountCOP) {
 
 /* =========================
    SAVINGS GOALS
+
 */
 export function createSavingsGoals() {
 

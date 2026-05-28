@@ -161,4 +161,101 @@ describe('Wallet Engine Tests', () => {
 
 });
 /* =========================
-   USDT TESTS
+   USDT TESTS*/
+
+test('Debe rechazar compra USDT por saldo insuficiente', () => {
+
+  const result = buyUSDT(10000, 50000);
+
+  expect(result.status).toBe('Rechazado');
+
+});
+
+test('Debe convertir correctamente COP a USDT', () => {
+
+  const result = buyUSDT(500000, 400000);
+
+  expect(result.usdt)
+    .toBe(400000 / result.exchangeRate);
+
+});
+
+/* =========================
+   SAVINGS GOALS TESTS*/
+
+test('Debe descontar dinero al transferir a meta de ahorro', () => {
+
+  const goals = createSavingsGoals();
+
+  const goalId = goals[0].id;
+
+  const result = transferToSavingsGoal(
+    200000,
+    goals,
+    goalId,
+    50000
+  );
+
+  expect(result.balance).toBe(150000);
+
+  expect(result.goals[0].saved)
+    .toBe(goals[0].saved + 50000);
+
+});
+
+test('Debe generar 3 metas de ahorro', () => {
+
+  const goals = createSavingsGoals();
+
+  expect(goals).toHaveLength(3);
+
+});
+
+/* =========================
+   BUDGET SYSTEM TESTS*/
+
+test('Debe clasificar como Gasto Crítico', () => {
+
+  const transactions = [
+
+    {
+      type: 'Ingreso',
+      amount: 100000,
+      status: 'Completado',
+    },
+
+    {
+      type: 'Retiro',
+      amount: 80000,
+      status: 'Completado',
+    },
+
+  ];
+
+  expect(classifyExpenses(transactions))
+    .toBe('Gasto Crítico');
+
+});
+
+test('Debe clasificar como Estable', () => {
+
+  const transactions = [
+
+    {
+      type: 'Ingreso',
+      amount: 100000,
+      status: 'Completado',
+    },
+
+    {
+      type: 'Retiro',
+      amount: 40000,
+      status: 'Completado',
+    },
+
+  ];
+
+  expect(classifyExpenses(transactions))
+    .toBe('Estable');
+
+});
