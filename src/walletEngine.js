@@ -87,8 +87,8 @@ export function calculateTotalCashback(transactions) {
 
 /* =========================
    USDT SYSTEM
-========================= */
 
+*/
 export function buyUSDT(balanceCOP, amountCOP) {
 
   const exchangeRate = faker.number.int({
@@ -115,8 +115,8 @@ export function buyUSDT(balanceCOP, amountCOP) {
 
 /* =========================
    SAVINGS GOALS
-========================= */
 
+*/
 export function createSavingsGoals() {
 
   return Array.from({ length: 3 }, () => ({
@@ -178,8 +178,7 @@ export function transferToSavingsGoal(
 }
 
 /* =========================
-   SAVINGS HISTORY  ← NUEVO
-========================= */
+   SAVINGS HISTORY  ← NUEVO*/
 
 export function createSavingsHistoryEntry(goalId, goalName, amount) {
 
@@ -214,8 +213,7 @@ export function getTotalTransferredToGoal(history, goalId) {
 }
 
 /* =========================
-   BUDGET SYSTEM
-========================= */
+   BUDGET SYSTEM*/
 
 export function classifyExpenses(transactions) {
 

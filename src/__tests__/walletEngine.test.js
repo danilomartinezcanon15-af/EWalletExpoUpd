@@ -161,8 +161,7 @@ describe('Wallet Engine Tests', () => {
 
 });
 /* =========================
-   USDT TESTS
-========================= */
+   USDT TESTS*/
 
 test('Debe rechazar compra USDT por saldo insuficiente', () => {
 
@@ -182,8 +181,7 @@ test('Debe convertir correctamente COP a USDT', () => {
 });
 
 /* =========================
-   SAVINGS GOALS TESTS
-========================= */
+   SAVINGS GOALS TESTS*/
 
 test('Debe descontar dinero al transferir a meta de ahorro', () => {
 
@@ -214,8 +212,7 @@ test('Debe generar 3 metas de ahorro', () => {
 });
 
 /* =========================
-   BUDGET SYSTEM TESTS
-========================= */
+   BUDGET SYSTEM TESTS*/
 
 test('Debe clasificar como Gasto Crítico', () => {
 
