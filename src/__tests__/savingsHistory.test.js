@@ -80,3 +80,42 @@ describe('Savings History Tests', () => {
     expect(result[0].id).toBe(entry.id);
 
   });
+
+// ── filterHistoryByGoal ────────────────────────────────
+
+  test('Debe retornar solo las entradas de la meta indicada', () => {
+
+    const history = [
+      createSavingsHistoryEntry('g1', 'Meta A', 10000),
+      createSavingsHistoryEntry('g2', 'Meta B', 20000),
+      createSavingsHistoryEntry('g1', 'Meta A', 30000),
+    ];
+
+    const result = filterHistoryByGoal(history, 'g1');
+
+    expect(result).toHaveLength(2);
+    result.forEach(entry => {
+      expect(entry.goalId).toBe('g1');
+    });
+
+  });
+
+  test('Debe retornar array vacío si la meta no tiene entradas', () => {
+
+    const history = [
+      createSavingsHistoryEntry('g1', 'Meta A', 10000),
+    ];
+
+    const result = filterHistoryByGoal(history, 'g-inexistente');
+
+    expect(result).toHaveLength(0);
+
+  });
+
+  test('Debe retornar array vacío si el historial está vacío', () => {
+
+    const result = filterHistoryByGoal([], 'g1');
+
+    expect(result).toHaveLength(0);
+
+  });
