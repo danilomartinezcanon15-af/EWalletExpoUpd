@@ -136,6 +136,7 @@ export default function WalletScreen() {
       </Text>
 
 {/* BOTONES FILTRO */}
+      {/* BOTONES FILTRO */}
 
       <View style={styles.buttons}>
 
