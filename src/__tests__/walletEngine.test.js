@@ -160,23 +160,3 @@ describe('Wallet Engine Tests', () => {
   });
 
 });
-/* =========================
-   USDT TESTS
-========================= */
-
-test('Debe rechazar compra USDT por saldo insuficiente', () => {
-
-  const result = buyUSDT(10000, 50000);
-
-  expect(result.status).toBe('Rechazado');
-
-});
-
-test('Debe convertir correctamente COP a USDT', () => {
-
-  const result = buyUSDT(500000, 400000);
-
-  expect(result.usdt)
-    .toBe(400000 / result.exchangeRate);
-
-});

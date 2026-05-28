@@ -135,6 +135,7 @@ export default function WalletScreen() {
         {totalCashback.toLocaleString('es-CO')}
       </Text>
 
+{/* BOTONES FILTRO */}
       {/* BOTONES FILTRO */}
 
       <View style={styles.buttons}>
