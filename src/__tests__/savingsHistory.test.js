@@ -38,3 +38,45 @@ describe('Savings History Tests', () => {
     expect(entry1.id).not.toBe(entry2.id);
 
   });
+
+// ── addSavingsHistoryEntry ─────────────────────────────
+
+  test('Debe agregar la nueva entrada al inicio del historial', () => {
+
+    const existing = [
+      createSavingsHistoryEntry('g1', 'Meta A', 10000),
+    ];
+
+    const newEntry = createSavingsHistoryEntry('g2', 'Meta B', 20000);
+
+    const updated = addSavingsHistoryEntry(existing, newEntry);
+
+    expect(updated[0].id).toBe(newEntry.id);
+    expect(updated).toHaveLength(2);
+
+  });
+
+  test('No debe mutar el historial original', () => {
+
+    const original = [
+      createSavingsHistoryEntry('g1', 'Meta A', 10000),
+    ];
+
+    const newEntry = createSavingsHistoryEntry('g2', 'Meta B', 20000);
+
+    addSavingsHistoryEntry(original, newEntry);
+
+    expect(original).toHaveLength(1);
+
+  });
+
+  test('Debe funcionar con historial vacío', () => {
+
+    const entry = createSavingsHistoryEntry('g1', 'Meta A', 30000);
+
+    const result = addSavingsHistoryEntry([], entry);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe(entry.id);
+
+  });
