@@ -160,3 +160,5 @@ describe('Wallet Engine Tests', () => {
   });
 
 });
+/* =========================
+   USDT TESTS
