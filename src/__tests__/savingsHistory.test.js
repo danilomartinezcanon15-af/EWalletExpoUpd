@@ -119,3 +119,41 @@ describe('Savings History Tests', () => {
     expect(result).toHaveLength(0);
 
   });
+
+// ── getTotalTransferredToGoal ──────────────────────────
+
+  test('Debe sumar correctamente los montos de una meta', () => {
+
+    const history = [
+      createSavingsHistoryEntry('g1', 'Meta A', 50000),
+      createSavingsHistoryEntry('g1', 'Meta A', 30000),
+      createSavingsHistoryEntry('g2', 'Meta B', 100000),
+    ];
+
+    const total = getTotalTransferredToGoal(history, 'g1');
+
+    expect(total).toBe(80000);
+
+  });
+
+  test('Debe retornar 0 si la meta no tiene entradas', () => {
+
+    const history = [
+      createSavingsHistoryEntry('g1', 'Meta A', 50000),
+    ];
+
+    const total = getTotalTransferredToGoal(history, 'g-inexistente');
+
+    expect(total).toBe(0);
+
+  });
+
+  test('Debe retornar 0 con historial vacío', () => {
+
+    const total = getTotalTransferredToGoal([], 'g1');
+
+    expect(total).toBe(0);
+
+  });
+
+});
